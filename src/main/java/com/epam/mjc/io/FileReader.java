@@ -3,9 +3,12 @@ package com.epam.mjc.io;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class FileReader {
+    private static final Logger logger = Logger.getLogger(FileReader.class.getName());
 
     public Profile getDataFromFile(File file) {
         Profile profile = new Profile();
@@ -33,7 +36,7 @@ public class FileReader {
                             profile.setPhone(Long.parseLong(value));
                             break;
                         default:
-                            System.out.println("Unknown key: " + key);
+                            logger.log(Level.WARNING, "Unknown key: {0}", key);
                             break;
                     }
                 }
